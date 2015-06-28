@@ -1,6 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
 <?php 
    //check if the form was submitted or if this page was loaded 
-   if($_POST['submit'] == 'register'){ 
+   if(isset($_POST['submit']) && $_POST['submit'] == 'register'){ 
    //get the variables from the submitted form 
       $first_name = stripslashes($_POST['first_name']); 
       $last_name = stripslashes($_POST['last_name']); 
@@ -27,27 +41,27 @@ echo "<li>PASSWORD</li>";
 } 
 echo "</ul><br />
 Please fill in these values and submit the form again.<br />";
-//Display the form again 
+
 echo "<form name='registration_form' action = '$_PHPSELF' method = 'post' id='registration_form'> 
 
 <label for='first_name'>*FIRST NAME:</label><br /> 
 
-<input name='first_name' type='text' id='first_name' size='25' maxsize='25' value = "' . $first_name . '" /><br /> 
+<input name='first_name' type='text' id='first_name' size='25' maxsize='25' value = " . $first_name . " /><br /> 
 
 <label for='last_name'>*LAST NAME:</label><br /> 
 
-<input name='last_name' type='text' id='last_name' size='25' maxsize='25' value="' . $last_name . '" /><br /> 
+<input name='last_name' type='text' id='last_name' size='25' maxsize='25' value=" . $last_name . " /><br /> 
 
 <label for='email'>*EMAIL ADDRESS:</label><br /> 
 
-<input name='email' type='text' id='email' size='45' maxsize='100' value="' . $email . '" /><br /> 
+<input name='email' type='text' id='email' size='45' maxsize='100' value=" . $email . " /><br /> 
 
 <label for='username'>*USERNAME:</label><br /> 
 
-<input name='username' type='text' id='username' size='25' maxsize='25' value="' . $username . '" /><br /> 
+<input name='username' type='text' id='username' size='25' maxsize='25' value=" . $username . " /><br /> 
 
 <label for='password'>*PASSWORD:</label><br /> 
-<input name='password' type='password' id='password' size='25' maxsize='25' value="' . $password . '" /><br /> 
+<input name='password' type='password' id='password' size='25' maxsize='25' value=" . $password . " /><br /> 
 
 <input name='register' type='submit' id='register' value='REGISTER' /> 
 </form>"; 
@@ -79,10 +93,10 @@ $email_check = mysql_query($email_query);
 
 $user_rows = mysql_num_rows($user_check); 
 
-$email_rows = mysql_num_rows($email_check); 
+$email_rows = mysql_num_rows($email_check); }
 
 if(($user_rows >=1) || ($email_rows >=1)){ 
-echo "<p>You have made a duplicate entry.<br />"; 
+echo "<p>You have made a duplicate entry.<br />";} 
 if($user_rows >=1){ 
 echo "The USERNAME: $username is already in our database.<br />"; 
 unset($username); 
@@ -97,24 +111,24 @@ echo "<form name='registration_form' action = '$_PHPSELF' method ='post' id='reg
 
 <label for='first_name'>*FIRST NAME:</label><br /> 
 
-<input name='first_name' type='text' id='first_name' size='25' maxsize='25' value = "' . $first_name . '" /> 
+<input name='first_name' type='text' id='first_name' size='25' maxsize='25' value = " . $first_name . " /> 
 <br /> 
 
 <label for='last_name'>*LAST NAME:</label><br /> 
 
-<input name='last_name' type='text' id='last_name' size='25' maxsize='25' value="' . $last_name . '" /> 
+<input name='last_name' type='text' id='last_name' size='25' maxsize='25' value=" . $last_name . " /> 
 <br /> 
 
 <label for='email'>*EMAIL ADDRESS:</label><br /> 
 
-<input name='email' type='text' id='email' size='45' maxsize='100' value="' . $email . '" /><br /> 
+<input name='email' type='text' id='email' size='45' maxsize='100' value=" . $email . " /><br /> 
 
 <label for='username'>*USERNAME:</label><br /> 
 
-<input name='username' type='text' id='username' size='25' maxsize='25' value="' . $username . '" /><br /> 
+<input name='username' type='text' id='username' size='25' maxsize='25' value=" . $username . " /><br /> 
 
 <label for='password'>*PASSWORD:</label><br /> 
-<input name='password' type='password' id='password' size='25' maxsize='25' value="' . $password . '" /><br /> 
+<input name='password' type='password' id='password' size='25' maxsize='25' value=" . $password . " /><br /> 
 
 <input name='register' type='submit' id='register' value='REGISTER' /> 
 </form>"; 
@@ -124,17 +138,17 @@ $sql = 'INSERT INTO members (first_name, last_name, email, username, password)
 VALUES ($first_name, $last_name, $email, $username, $dbpass)'; 
 mysql_query($sql); 
             mysql_close(); 
-$to = $email 
-$from = "[i]your website and the webmaster’s email address[/i] nX-Mailer: PHP/" . phpversion(); 
-$subject = "Your account information at [i]your website[/i]"; 
-$message = "You recently registered with [i]your website[/i].  Here is your log in information: 
+$to = $email; 
+$from = ' nX-Mailer: PHP/' . phpversion; 
+$subject = "Your account information at HackTuesexample.com"; 
+$message = "You recently registered with HackTuesexample.com.  Here is your log in information: 
 
 Username: $username 
 Password: $password 
 Once you activate your account through the link below you will be able to login to your account. 
 
 Click the link to activate: 
-http://www.[i]yourwebsite[/i].net/activate.php?id=$user_id&code=$db_password 
+http://www.HackTuesexample.com.net/activate.php?id=$user_id&code=$db_password 
 
 Thank you 
 The Webmaster 
@@ -170,5 +184,28 @@ echo "<form name='registration_form' action = '$_PHPSELF' method = 'post' id='re
 
 <input name='register' type='submit' id='register' value='REGISTER' /> 
 </form>"; 
-} 
-?> 
+   }} else { ?>
+   
+<!DOCTYPE html>
+<html>
+<body>
+	<form name="registration_form" action = "<?php echo $_PHPSELF ?>" method = "post" id="registration_form">
+	<label for="first_name">*FIRST NAME:</label><br /> 
+   <input name="first_name" type="text" id="first_name" size="25" maxsize="25"/><br /> 
+   <label for="last_name">*LAST NAME:</label><br /> 
+   <input name="last_name" type="text" id="last_name" size="25" maxsize="25" /><br /> 
+   <label for="email">*EMAIL ADDRESS:</label><br /> 
+   <input name='email' type='text' id='email' size='45' maxsize='100' /><br /> 
+   <label for='username'>*USERNAME:</label><br /> 
+   <input name='username' type='text' id='username' size='25' maxsize='25' /><br /> 
+   <label for='password'>*PASSWORD:</label><br /> 
+   <input name='password' type='password' id='password' size='25' maxsize='25' /><br /> 
+	<button type="button class="btn btn-primary" href="#">Login</button>
+	
+</form> 
+</body>
+</html>
+<?php 
+   }
+?>
+</body>
