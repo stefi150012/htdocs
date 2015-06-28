@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	body {
+		background-image: url("http://upload.bg/?get_file=e5860b0bd09eac17d110179b116f88a223c2646e&inline");
+	}
+</style>
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -189,6 +194,13 @@ echo "<form name='registration_form' action = '$_PHPSELF' method = 'post' id='re
    
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+	body {
+		text-align: center;
+		color: blue;
+	}
+</style>
 <body>
 	<form name="registration_form" action = "HackTUES.html" method = "post" id="registration_form">
 	<label for="first_name">*FIRST NAME:</label><br /> 
@@ -201,8 +213,7 @@ echo "<form name='registration_form' action = '$_PHPSELF' method = 'post' id='re
    <input name='username' type='text' id='username' size='25' maxsize='25' /><br /> 
    <label for='password'>*PASSWORD:</label><br /> 
    <input name='password' type='password' id='password' size='25' maxsize='25' /><br /> 
-	<button type="button class="btn btn-primary">Login</button>
-	
+	<button type="button class="btn btn-primary">Register</button>	
 </form> 
 </body>
 </html>
