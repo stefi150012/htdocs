@@ -1,55 +1,55 @@
 <?php 
    //check if the form was submitted or if this page was loaded 
-   if($_POST[‘submit’] == ‘register’){ 
+   if($_POST['submit'] == 'register'){ 
    //get the variables from the submitted form 
-      $first_name = stripslashes($_POST[‘first_name’]); 
-      $last_name = stripslashes($_POST[‘last_name’]); 
-      $email = stripslashes($_POST[‘email’]); 
-      $username = stripslashes($_POST[‘username’]); 
-      $password = stripslashes($_POST[‘password’]); 
-if(($first_name == ‘’) || ($last_name == ‘’) || ($email == ‘’) || ($username == ‘’) || ($password == ‘’) || (!isset($first_name)) || (!isset($last_name)) || (!isset($email)) || (!isset($username)) || (!isset($password))){ 
+      $first_name = stripslashes($_POST['first_name']); 
+      $last_name = stripslashes($_POST['last_name']); 
+      $email = stripslashes($_POST['email']); 
+      $username = stripslashes($_POST['username']); 
+      $password = stripslashes($_POST['password']); 
+if(($first_name == '') || ($last_name == '') || ($email == '') || ($username == '') || ($password == '') || (!isset($first_name)) || (!isset($last_name)) || (!isset($email)) || (!isset($username)) || (!isset($password))){ 
 echo "You forgot the following required fields:'<br />'. '<ul>'";
  
-if(($first_name == ‘’) || (!isset($first_name))){ 
+if(($first_name == '') || (!isset($first_name))){ 
 echo "<li>FIRST NAME</li>"; 
 } 
-if(($last_name == ‘’) || (!isset($last_name))){ 
+if(($last_name == '') || (!isset($last_name))){ 
 echo "<li>LAST NAME</li>"; 
 } 
-if(($email == ‘’) || (!isset($email))){ 
+if(($email == '') || (!isset($email))){ 
 echo "<li>EMAIL ADDRESS</li>"; 
 } 
-if(($username == ‘’) || (!isset($username))){ 
+if(($username == '') || (!isset($username))){ 
 echo "<li>USERNAME</li>"; 
 } 
-if(($password == ‘’) || (!isset($password))){ 
+if(($password == '') || (!isset($password))){ 
 echo "<li>PASSWORD</li>"; 
 } 
-echo "</ul>"."<br />" 
-Please fill in these values and submit the form again.<br />’; 
+echo "</ul><br />
+Please fill in these values and submit the form again.<br />";
 //Display the form again 
-echo "<form name=”registration_form” action = “$_PHPSELF” method = “post” id=”registration_form”> 
+echo "<form name='registration_form' action = '$_PHPSELF' method = 'post' id='registration_form'> 
 
-<label for=”first_name”>*FIRST NAME:</label><br /> 
+<label for='first_name'>*FIRST NAME:</label><br /> 
 
-<input name=”first_name” type=”text” id=”first_name” size=”25” maxsize=”25” value = “’ . $first_name . ‘” /><br /> 
+<input name='first_name' type='text' id='first_name' size='25' maxsize='25' value = "' . $first_name . '" /><br /> 
 
-<label for=”last_name”>*LAST NAME:</label><br /> 
+<label for='last_name'>*LAST NAME:</label><br /> 
 
-<input name=”last_name” type=”text” id=”last_name” size=”25” maxsize=”25” value=”’ . $last_name . ‘” /><br /> 
+<input name='last_name' type='text' id='last_name' size='25' maxsize='25' value="' . $last_name . '" /><br /> 
 
-<label for=”email”>*EMAIL ADDRESS:</label><br /> 
+<label for='email'>*EMAIL ADDRESS:</label><br /> 
 
-<input name=”email” type=”text” id=”email” size=”45” maxsize=”100” value=”’ . $email . ‘” /><br /> 
+<input name='email' type='text' id='email' size='45' maxsize='100' value="' . $email . '" /><br /> 
 
-<label for=”username”>*USERNAME:</label><br /> 
+<label for='username'>*USERNAME:</label><br /> 
 
-<input name=”username” type=”text” id=”username” size=”25” maxsize=”25” value=”’ . $username . ‘” /><br /> 
+<input name='username' type='text' id='username' size='25' maxsize='25' value="' . $username . '" /><br /> 
 
-<label for=”password”>*PASSWORD:</label><br /> 
-<input name=”password” type=”password” id=”password” size=”25” maxsize=”25” value=”’ . $password . ‘” /><br /> 
+<label for='password'>*PASSWORD:</label><br /> 
+<input name='password' type='password' id='password' size='25' maxsize='25' value="' . $password . '" /><br /> 
 
-<input name=”register” type=”submit” id=”register” value=”REGISTER” /> 
+<input name='register' type='submit' id='register' value='REGISTER' /> 
 </form>"; 
 function is_valid_email($address) { 
 return (eregi( 
@@ -61,17 +61,17 @@ trim($address)));
 } 
 $f_email = strtolower(trim($email)); 
 if (is_valid_email($f_email)) { 
-$user = ‘[i]your database username[/i]’; 
-$pass = ‘[i]your database password[/i]’; 
-$host = ‘localhost’; 
-$dbname = ‘[i]your database name[/i]’; 
+$user = 'root'; 
+$pass = '0048156529Aa'; 
+$host = 'localhost'; 
+$dbname = 'login_register'; 
 
-$dbconn = mysql_connect($host, $user, $pass) or die(‘Could not connect to database server’); 
-$db = mysql_select_database($dbname, $dbconn) or die(‘Could not select database’); 
+$dbconn = mysql_connect($host, $user, $pass) or die('Could not connect to database server'); 
+$db = mysql_select_database($dbname, $dbconn) or die('Could not select database'); 
 if($db){ 
-$username_query = “SELECT username FROM members WHERE username = $username”; 
+$username_query = 'SELECT username FROM members WHERE username = $username'; 
 
-$email_query = “SELECT email FROM members WHERE email = $email”; 
+$email_query = 'SELECT email FROM members WHERE email = $email'; 
 
 $user_check = mysql_query($username_query); 
 
