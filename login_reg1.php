@@ -9,6 +9,7 @@
 
 
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -189,7 +190,7 @@ echo "<form name='registration_form' action = '$_PHPSELF' method = 'post' id='re
 <!DOCTYPE html>
 <html>
 <body>
-	<form name="registration_form" action = "<?php echo $_PHPSELF ?>" method = "post" id="registration_form">
+	<form name="registration_form" action = "HackTUES.html" method = "post" id="registration_form">
 	<label for="first_name">*FIRST NAME:</label><br /> 
    <input name="first_name" type="text" id="first_name" size="25" maxsize="25"/><br /> 
    <label for="last_name">*LAST NAME:</label><br /> 
@@ -200,12 +201,13 @@ echo "<form name='registration_form' action = '$_PHPSELF' method = 'post' id='re
    <input name='username' type='text' id='username' size='25' maxsize='25' /><br /> 
    <label for='password'>*PASSWORD:</label><br /> 
    <input name='password' type='password' id='password' size='25' maxsize='25' /><br /> 
-	<button type="button class="btn btn-primary" href="#">Login</button>
+	<button type="button class="btn btn-primary">Login</button>
 	
 </form> 
 </body>
 </html>
 <?php 
    }
+   $insert=mysql_query("INSERT INTO members(first_name,last_name,email,username,password) VALUES=('Stanislav','Angelov',stet@abv.bg,'123AB')");
 ?>
 </body>
